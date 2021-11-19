@@ -1,0 +1,16 @@
+﻿## Interface: 30000
+## LoadOnDemand: 1
+## Title: Lib: Deformat-2.0
+## Notes: A library to deformat format strings.
+## Author: ckknight
+## X-eMail: ckknight@gmail.com
+## Version: 1.0 $Revision: 3817 $
+## X-Category: Library
+## OptionalDeps: Ace2
+## X-Embeds: Ace2
+## X-AceLibrary-Deformat-2.0: true
+## X-License: LGPL v2.1
+
+embeds.xml
+
+Deformat-2.0\Deformat-2.0.lua

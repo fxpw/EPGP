@@ -1,0 +1,200 @@
+------------------------------------------------------------------------
+r44 | ddumont | 2008-11-04 21:49:11 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+
+------------------------------------------------------------------------
+r43 | ddumont | 2008-11-04 21:45:56 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+
+------------------------------------------------------------------------
+r42 | ddumont | 2008-11-04 21:27:21 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+
+------------------------------------------------------------------------
+r41 | ddumont | 2008-11-04 20:26:04 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+onenter support, cleanup from last night.
+------------------------------------------------------------------------
+r40 | ddumont | 2008-11-04 03:50:06 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+no more late coding for me....
+------------------------------------------------------------------------
+r39 | ddumont | 2008-11-04 03:31:00 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+fail...
+------------------------------------------------------------------------
+r38 | ddumont | 2008-11-04 03:30:44 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+oops...
+------------------------------------------------------------------------
+r37 | ddumont | 2008-11-04 03:13:50 +0000 (Tue, 04 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+onmouseover / onmouseoverargs for rows/cells
+------------------------------------------------------------------------
+r35 | ddumont | 2008-11-01 02:04:21 +0000 (Sat, 01 Nov 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+onclick fix.   Thanks mackatack!
+------------------------------------------------------------------------
+r33 | ddumont | 2008-10-30 23:48:44 +0000 (Thu, 30 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+Row filtering functions!
+------------------------------------------------------------------------
+r31 | ddumont | 2008-10-30 02:04:30 +0000 (Thu, 30 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+
+onclick supported for cell or row
+------------------------------------------------------------------------
+r29 | ddumont | 2008-10-19 15:54:35 +0000 (Sun, 19 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+Scroll chains!!!!!!    primary sort and secondary, tertiary...  etc
+------------------------------------------------------------------------
+r26 | ddumont | 2008-10-18 21:25:48 +0000 (Sat, 18 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+bugfixes
+------------------------------------------------------------------------
+r25 | ddumont | 2008-10-18 18:33:11 +0000 (Sat, 18 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+default sort order for columsn.  "asc" or "dsc"    which way to sort when first clicked.
+------------------------------------------------------------------------
+r24 | ddumont | 2008-10-18 18:17:32 +0000 (Sat, 18 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+cell coloring by functions!
+------------------------------------------------------------------------
+r23 | ddumont | 2008-10-18 14:55:56 +0000 (Sat, 18 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+support for functions to supply values for cell data (crazy!)
+------------------------------------------------------------------------
+r21 | ddumont | 2008-10-18 03:18:24 +0000 (Sat, 18 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+column colors
+------------------------------------------------------------------------
+r19 | ddumont | 2008-10-17 04:24:17 +0000 (Fri, 17 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+custom highlight color
+------------------------------------------------------------------------
+r18 | ddumont | 2008-10-17 03:59:00 +0000 (Fri, 17 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+row highlights
+------------------------------------------------------------------------
+r16 | ddumont | 2008-10-17 01:45:32 +0000 (Fri, 17 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+cell, column, row coloring.  and column sorting.
+------------------------------------------------------------------------
+r14 | ddumont | 2008-10-16 22:22:51 +0000 (Thu, 16 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+v0.3beta ready
+------------------------------------------------------------------------
+r13 | ddumont | 2008-10-16 22:08:57 +0000 (Thu, 16 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+now displays data and column titles.
+------------------------------------------------------------------------
+r12 | ddumont | 2008-10-16 05:03:26 +0000 (Thu, 16 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+FontString wrath change
+------------------------------------------------------------------------
+r10 | ddumont | 2008-10-16 01:10:11 +0000 (Thu, 16 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+
+lib-st:
+wrath change to scroll frames.
+------------------------------------------------------------------------
+r9 | ddumont | 2008-10-15 03:13:46 +0000 (Wed, 15 Oct 2008) | 1 line
+Changed paths:
+   M /trunk
+
+
+------------------------------------------------------------------------
+r8 | ddumont | 2008-10-15 01:41:41 +0000 (Wed, 15 Oct 2008) | 2 lines
+Changed paths:
+   M /trunk/lib-st.toc
+
+lib-st:
+bumped toc interface version
+------------------------------------------------------------------------
+r4 | ddumont | 2008-10-15 01:27:06 +0000 (Wed, 15 Oct 2008) | 2 lines
+Changed paths:
+   A /trunk/.pkgmeta
+
+lib-st:
+added .pkgmeta
+------------------------------------------------------------------------
+r3 | ddumont | 2008-10-14 23:30:17 +0000 (Tue, 14 Oct 2008) | 2 lines
+Changed paths:
+   A /trunk/Core.lua
+   A /trunk/embeds.xml
+
+lib-st:
+Initial Import
+------------------------------------------------------------------------
+r2 | ddumont | 2008-10-14 23:29:51 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   A /trunk/lib-st.toc
+
+
+------------------------------------------------------------------------
+r1 | root | 2008-10-14 22:57:58 +0000 (Tue, 14 Oct 2008) | 1 line
+Changed paths:
+   A /branches
+   A /tags
+   A /trunk
+
+"lib-st/mainline: Initial Import"
+------------------------------------------------------------------------

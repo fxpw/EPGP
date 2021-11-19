@@ -1,0 +1,24 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: r1
+## X-Curse-Project-Name: EPGPAttendance
+## X-Curse-Project-ID: epgp-attendance
+## X-Curse-Repository-ID: wow/epgp-attendance/mainline
+## X-Curse-Packaged-Version: r5
+## X-Curse-Project-Name: EPGPAttendance
+## X-Curse-Project-ID: epgp-attendance
+## X-Curse-Repository-ID: wow/epgp-attendance/mainline
+
+## Title: EPGPAttendance
+## Version: 3.0
+## Author: Corg, for tralala fxpw and fallafell
+## X-Category: Guild
+## X-Website: http://www.wowace.com/addons/epgp-attendance/
+## Notes: EPGPAttendance is a mod that estimates raid attendance based on observed changes in EP.
+## SavedVariables: EPGPAttendanceDB
+
+## RequiredDeps: EPGP
+## OptionalDeps: Ace3
+
+embeds.xml
+
+EPGPAttendance.lua

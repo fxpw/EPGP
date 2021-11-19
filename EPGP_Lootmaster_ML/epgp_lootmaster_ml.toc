@@ -1,0 +1,18 @@
+﻿## Interface: 30300
+## Title: EPGP LootMaster - |cFFFF8080ML|r
+## Author: Bushmaster-Twisting Nether-EU, for tralala fxpw and fallafell
+## Version: 0.4.7
+## Notes: Распределение лута для EPGP - Инструменты МастерЛутера - Игрокам можно спокойно выключать
+## X-Category: Guild
+## RequiredDeps: epgp_lootmaster
+## OptionalDeps: EPGP, CT_RaidTracker,CT RaidTracker 1.5 (modded by Eris)
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Curse-Packaged-Version: 0.4.7
+## X-Curse-Project-Name: EPGPLootmaster
+## X-Curse-Project-ID: epgp_lootmaster
+## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline
+lootmaster_ml.lua
+lootmaster_ml_ui.lua
+lootmaster_options_buttonwidget.lua
+lootmaster_options.lua

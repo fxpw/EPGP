@@ -1,0 +1,36 @@
+﻿## Interface: 30300
+## Title: EPGP LootMaster - |cFFFF8080Core|r
+## Author: Bushmaster-Twisting Nether-EU, for tralala fxpw and fallafell
+## Version: 0.4.7
+## Notes: Распределение лута для EPGP
+## X-Category: Guild
+## OptionalDeps: EPGP, CT_RaidTracker,CT RaidTracker 1.5 (modded by Eris)
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: EPGPLootMaster
+## X-Curse-Packaged-Version: 0.4.7
+## X-Curse-Project-Name: EPGPLootmaster
+## X-Curse-Project-ID: epgp_lootmaster
+## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline
+
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceComm-3.0\AceComm-3.0.xml
+Libs\LibCompress\LibCompress.lua
+Libs\LibTalentQuery-1.0\LibTalentQuery-1.0.lua
+
+embeds.xml
+
+lootmaster_core.lua
+lootmaster_player.lua
+lootmaster_player_ui.lua
+
+modules.xml

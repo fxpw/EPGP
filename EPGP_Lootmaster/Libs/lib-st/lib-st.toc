@@ -1,0 +1,16 @@
+## Interface: 30000
+## Title: lib-st |cff7f7fff -Ace3-|r
+## Notes: Does stuff for sachmo
+## Author: ddumont (Sachmo - Arthas {TG}) 
+## Version: r44 
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+## X-Category: Interface Enhancements
+## X-Curse-Packaged-Version: r44
+## X-Curse-Packaged-Version: 0.4.7
+## X-Curse-Project-Name: EPGPLootmaster
+## X-Curse-Project-ID: epgp_lootmaster
+## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline
+embeds.xml
+
+Core.lua
