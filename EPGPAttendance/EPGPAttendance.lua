@@ -739,7 +739,7 @@ function EPGPAttendance:TmGetRaidDay(tmChangeNum)
 	if (not tmChangeNum) then
 		tmChangeNum = EPGPAttendance:TmGetChangeNum();
 	end
-
+	
 	return c_tmUnitsPerDay * floor((tmChangeNum - EPGPAttendance.db.profile.tmRaidStartTime) / c_tmUnitsPerDay);
 
 end
@@ -753,6 +753,7 @@ function EPGPAttendance:IGetRaidDayOfWeek(tmChangeNum)
 
 	local tmRaidDay = EPGPAttendance:TmGetRaidDay(tmChangeNum);
 	--EPGPAttendance:PrintMessage(date("!%a %m/%d %I:%M %p", tmChangeNum) .. " -> " .. date("!%a %m/%d %I:%M %p", tmRaidDay));
+	
 	return tonumber(date("!%w", tmRaidDay)), tmRaidDay;
 
 end
@@ -1387,11 +1388,11 @@ function EPGPAttendance:TblComputeHistoryTableData()
 
 			-- Determine color and text
 			if (iAdjustmentCount > 0) then
-				strChange = string.format("Mass EP Award: %d EP, %d Attended, %d Adjustment(s)",
+				strChange = string.format("Массовое EP: %d EP, Начислений %d, Изменений %d",
 								iMassEPAward, iAttendedCount, iAdjustmentCount);
 				colorChange = c_colorMassEPWithAdj;
 			else
-				strChange = string.format("Mass EP Award: %d EP, %d Attended", iMassEPAward, iAttendedCount);
+				strChange = string.format("Массовое EP: %d EP, Начислений %d", iMassEPAward, iAttendedCount);
 			end
 
 		else
@@ -1416,13 +1417,13 @@ function EPGPAttendance:TblComputeHistoryTableData()
 
 			-- Determine color and text
 			if (fNoPositiveDeltas and iNegativeCount >= EPGPAttendance.db.profile.iDecayQuorum) then
-				strChange = string.format("EP Decay: %d Adjustment(s)", iAdjustmentCount);
+				strChange = string.format("Срез EP: Изменений %d", iAdjustmentCount);
 				colorChange = c_colorDecayEP;
 			elseif (iAdjustmentCount == 1) then
-				strChange = string.format("EP Change: %s (%d EP)", strLastPlayer, tblPersistChange[strLastPlayer]);
+				strChange = string.format("Изменение EP: %s (%d EP)", strLastPlayer, tblPersistChange[strLastPlayer]);
 				colorChange = c_colorEPAdjustment;
 			else
-				strChange = string.format("EP Change: %d Adjustment(s)", iAdjustmentCount);
+				strChange = string.format("Изменение EP: Изменений %d", iAdjustmentCount);
 				colorChange = c_colorEPAdjustment;
 			end
 
@@ -1545,7 +1546,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 				EPGPAttendance.db.profile.tblFrameLocation.strParentAnchor,
 				EPGPAttendance.db.profile.tblFrameLocation.iOffsetX,
 				EPGPAttendance.db.profile.tblFrameLocation.iOffsetY
-				);
+				);		
 		else
 			EPGPAttendance.frmTitleBar:SetPoint("CENTER", UIParent, "CENTER", 0, 0);
 		end
@@ -1571,7 +1572,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 		EPGPAttendance.frmTitleBarText:SetPoint("LEFT", EPGPAttendance.frmTitleBar, "LEFT", 3, 0);
 		EPGPAttendance.frmTitleBarText:SetJustifyH("LEFT");
 		EPGPAttendance.frmTitleBarText:SetTextColor(1, 1, 1, 1);
-		EPGPAttendance.frmTitleBarText:SetText("EPGPAttendance");
+		EPGPAttendance.frmTitleBarText:SetText("Посещение");
 	end
 
 	-- Create the History button
@@ -1882,25 +1883,25 @@ function EPGPAttendance:NavigatePage(iPage, varPageArg)
 
 		local tblData = EPGPAttendance:TblComputeMainTableData();
 		EPGPAttendance.stMainTable:SetData(tblData);
-		EPGPAttendance.frmTitleBarText:SetText("EPGPAttendance");
+		EPGPAttendance.frmTitleBarText:SetText("Посещение");
 
 	elseif (EPGPAttendance.tblNavStack[1].iPage == c_iPageCharacter) then
 
 		local tblData = EPGPAttendance:TblComputeCharTableData(EPGPAttendance.tblNavStack[1].varPageArg);
 		EPGPAttendance.stCharTable:SetData(tblData);
-		EPGPAttendance.frmTitleBarText:SetText("EPGPAttendance - " .. EPGPAttendance.tblNavStack[1].varPageArg);
+		EPGPAttendance.frmTitleBarText:SetText("Посещение - " .. EPGPAttendance.tblNavStack[1].varPageArg);
 
 	elseif (EPGPAttendance.tblNavStack[1].iPage == c_iPageHistory) then
 
 		local tblData = EPGPAttendance:TblComputeHistoryTableData();
 		EPGPAttendance.stHistoryTable:SetData(tblData);
-		EPGPAttendance.frmTitleBarText:SetText("EPGPAttendance - History");
+		EPGPAttendance.frmTitleBarText:SetText("История");
 
 	elseif (EPGPAttendance.tblNavStack[1].iPage == c_iPageChange) then
 
 		local tblData = EPGPAttendance:TblComputeChangeTableData(EPGPAttendance.tblNavStack[1].varPageArg);
 		EPGPAttendance.stChangeTable:SetData(tblData);
-		EPGPAttendance.frmTitleBarText:SetText("EPGPAttendance - " .. date("!%a %m/%d %I:%M %p", EPGPAttendance.tblNavStack[1].varPageArg));
+		EPGPAttendance.frmTitleBarText:SetText("Посещение - " .. date("!%a %m/%d %I:%M %p", EPGPAttendance.tblNavStack[1].varPageArg));
 
 	end
 

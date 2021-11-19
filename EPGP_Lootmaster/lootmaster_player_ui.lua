@@ -225,7 +225,7 @@ function LootMaster:CreateLootSelectFrame()
               self:UpdateLootUI();
     end)
     btnPass:SetPoint("BOTTOMLEFT",btnGreed,"BOTTOMRIGHT",5,0)
-    btnPass:SetText("Пасс")
+    btnPass:SetText("Отказ")
     btnPass:SetHeight(25)
     btnPass:SetWidth(btnPass:GetFontString():GetStringWidth() + 20)
     frame.btnPass = btnPass
