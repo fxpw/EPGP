@@ -576,7 +576,7 @@ local function CreateEPGPLogFrame()
 local epgpattisload = IsAddOnLoaded("EPGPAttendance")
 -- print(epgpattisload)
   if epgpattisload == 1 then
-    local epgpa = CreateFrame("Button", nil, f, "UIPanelButtonTemplate")
+    local epgpa = CreateFrame("Button", "EPGPAT", f, "UIPanelButtonTemplate")
     epgpa:SetNormalFontObject("GameFontNormalSmall")
     epgpa:SetHighlightFontObject("GameFontHighlightSmall")
     epgpa:SetDisabledFontObject("GameFontDisableSmall")
@@ -589,9 +589,10 @@ local epgpattisload = IsAddOnLoaded("EPGPAttendance")
         "OnClick",
         function(self, button, down)
           if (EPGPAttendance.frmTitleBar and EPGPAttendance.frmTitleBar:IsShown()) then
-            EPGPAttendance.frmTitleBar:Hide();
+              EPGPAttendance:HideFrame();          
+          else
+            EPGPAttendance:NavigatePage();
           end
-          EPGPAttendance:NavigatePage();
         end)
   end
   --------------------------------------------------------

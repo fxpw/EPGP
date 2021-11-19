@@ -287,7 +287,7 @@ function EPGPAttendance:OnInitialize()
 					},
 					DataOptions = {
 						type = "group",
-						name = "Data",
+						name = "Дата",
 						guiInline = true,
 						order = 3,
 						args = {
@@ -315,7 +315,7 @@ function EPGPAttendance:OnInitialize()
 							},
 							tmRaidStartTime = {
 								type = "input",
-								name = "Raid start time",
+								name = "Начало рейда",
 								desc = "The start time of a raid (in the server's time zone). Mass EP awards prior to this time will be considered a raid on the previous day.  This has subtle effects on attendance calculations.",
 								order = 3,
 								validate = function(info, value) if (not EPGPAttendance:TmParseTimeOfDay(value)) then return "Please format the time like '4:30 PM'." else return true end end,
@@ -629,7 +629,7 @@ end
 function EPGPAttendance:TblCreateMainTableColumnDefinition()
 	return {
 		[c_iMainColPlayer] = {
-			name = "Name",
+			name = "Имя",
 			width = 100,
 			align = "LEFT",
 			color = c_colorDefaultText,
@@ -1535,7 +1535,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 
 	-- Create the frame
 	if (not EPGPAttendance.frmTitleBar) then
-		EPGPAttendance.frmTitleBar = CreateFrame("Frame", "EPGPAttendanceFrame", UIParent);
+		EPGPAttendance.frmTitleBar = CreateFrame("Frame", "EPGPAttendanceFrameTB", UIParent);
 		EPGPAttendance.frmTitleBar:SetFrameStrata("DIALOG");
 
 		if (EPGPAttendance.db.profile.tblFrameLocation) then
@@ -1576,7 +1576,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 
 	-- Create the History button
 	if (not EPGPAttendance.frmHistoryButton) then
-		EPGPAttendance.frmHistoryButton = CreateFrame("Button", "EPGPAttendanceFrame", EPGPAttendance.frmTitleBar);
+		EPGPAttendance.frmHistoryButton = CreateFrame("Button", "EPGPAttendanceFrameHB", EPGPAttendance.frmTitleBar);
 
 		EPGPAttendance.frmHistoryButton:SetPoint("RIGHT", EPGPAttendance.frmTitleBar, "LEFT", -c_iButtonSpacing, 0);
 		EPGPAttendance.frmHistoryButton:SetHeight(c_iTitleHeight);
@@ -1602,7 +1602,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 
 	-- Create the Back button
 	if (not EPGPAttendance.frmBackButton) then
-		EPGPAttendance.frmBackButton = CreateFrame("Button", "EPGPAttendanceFrame", EPGPAttendance.frmTitleBar);
+		EPGPAttendance.frmBackButton = CreateFrame("Button", "EPGPAttendanceFrameBB", EPGPAttendance.frmTitleBar);
 
 		EPGPAttendance.frmBackButton:SetPoint("RIGHT", EPGPAttendance.frmTitleBar, "LEFT", -c_iButtonSpacing, 0);
 		EPGPAttendance.frmBackButton:SetHeight(c_iTitleHeight);
@@ -1628,7 +1628,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 
 	-- Create the Config button
 	if (not EPGPAttendance.frmConfigButton) then
-		EPGPAttendance.frmConfigButton = CreateFrame("Button", "EPGPAttendanceFrame", EPGPAttendance.frmTitleBar);
+		EPGPAttendance.frmConfigButton = CreateFrame("Button", "EPGPAttendanceFrameCB", EPGPAttendance.frmTitleBar);
 
 		EPGPAttendance.frmConfigButton:SetPoint("LEFT", EPGPAttendance.frmTitleBar, "RIGHT", c_iButtonSpacing, 0);
 		EPGPAttendance.frmConfigButton:SetHeight(c_iTitleHeight);
@@ -1654,7 +1654,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 
 	-- Create the Close button
 	if (not EPGPAttendance.frmCloseButton) then
-		EPGPAttendance.frmCloseButton = CreateFrame("Button", "EPGPAttendanceFrame", EPGPAttendance.frmTitleBar);
+		EPGPAttendance.frmCloseButton = CreateFrame("Button", "EPGPAttendanceFrameCLB", EPGPAttendance.frmTitleBar);
 
 		EPGPAttendance.frmCloseButton:SetPoint("LEFT", EPGPAttendance.frmTitleBar, "RIGHT", c_iButtonWidth + 2 * c_iButtonSpacing, 0);
 		EPGPAttendance.frmCloseButton:SetHeight(c_iTitleHeight);
@@ -1693,7 +1693,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 		local tblColumnSet =
 		{
 			[c_iCharColDate] = {
-				name = "Date",
+				name = "Дата",
 				width = 120,
 				align = "LEFT",
 				color = c_colorDefaultText,
@@ -1712,7 +1712,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 				comparesort = EPGPAttendance_TableCompareRows,
 			},
 			[c_iCharColChange] = {
-				name = "Change",
+				name = "Изменение",
 				width = 280,
 				align = "LEFT",
 				color = c_colorDefaultText,
@@ -1733,7 +1733,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 		local tblColumnSet =
 		{
 			[c_iHistoryColDate] = {
-				name = "Date",
+				name = "Дата",
 				width = 120,
 				align = "LEFT",
 				color = c_colorDefaultText,
@@ -1743,7 +1743,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 				comparesort = EPGPAttendance_TableCompareRows,
 			},
 			[c_iHistoryColChange] = {
-				name = "Change",
+				name = "Изменение",
 				width = 330,
 				align = "LEFT",
 				color = c_colorDefaultText,
@@ -1764,7 +1764,7 @@ function EPGPAttendance:ShowFrameAndCurrentPage()
 		local tblColumnSet =
 		{
 			[c_iChangeColPlayer] = {
-				name = "Player",
+				name = "Игрок",
 				width = 100,
 				align = "LEFT",
 				color = c_colorDefaultText,
