@@ -1289,10 +1289,10 @@ function EPGPAttendance:TblComputeCharTableData(strPlayer)
 				local colorChange;
 
 				if (iEPDelta >= iMassEPAward) then
-					strChange = "Attended Raid";
+					strChange = "Был в рейде";
 					colorChange = c_colorAttendedRaid;
 				else
-					strChange = "Missed Raid";
+					strChange = "Отсутствовал";
 					colorChange = c_colorMissedRaid;
 				end
 
@@ -1333,7 +1333,7 @@ function EPGPAttendance:TblComputeCharTableData(strPlayer)
 					{
 						[c_iCharColDate] = EPGPAttendance:TblCreateColoredDateTimeCell(tmChangeNum),
 						[c_iCharColEP] = { value = iEPAdjustment, color = c_colorEPAdjustment },
-						[c_iCharColChange] = { value = "EP Adjustment", color = c_colorEPAdjustment },
+						[c_iCharColChange] = { value = "Изменение/Срез", color = c_colorEPAdjustment },
 					},
 				};
 
