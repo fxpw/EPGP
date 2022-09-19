@@ -80,6 +80,16 @@ function mod:MassEPAward(event_name, names, reason, amount,
   end
 end
 
+function mod:MassGPAward(event_name, names, reason, amount, extras_names, extras_reason, extras_amount)
+  local normal = MakeCommaSeparated(names)
+  mod:Announce("%+d GP (%s) для %s", amount, reason, normal)
+
+  if extras_names then
+  local extras = MakeCommaSeparated(extras_names)
+  mod:Announce(L["%+d EP (%s) to %s"], extras_amount, extras_reason, extras)
+  end
+end
+
 function mod:Decay(event_name, decay_p)
   mod:Announce(L["Decay of EP/GP by %d%%"], decay_p)
 end
@@ -147,6 +157,7 @@ mod.optionsArgs = {
     values = {
       EPAward = L["A member is awarded EP"],
       MassEPAward = L["Guild or Raid are awarded EP"],
+      MassGPAward = "Guild or Raid are awarded GP",
       GPAward = L["A member is credited GP"],
       BankedItem = L["An item was disenchanted or deposited into the guild bank"],
       Decay = L["EPGP decay"],

@@ -241,7 +241,7 @@ function mod:DisplayItemUserSelection(lootData)
     btn:SetPoint("BOTTOMLEFT", icon, "BOTTOMRIGHT", 10, 2)
     btn:SetHeight(25)
     btn:SetWidth(85)
-    btn:SetText("Mainspec")
+    btn:SetText("Мейнспек")
     btn:SetScript("OnEnter", function()
       mod:ShowInfoPopup("Mainspec", "Use this selection if this item is a major upgrade "..
                                      "for your main talent build and you wish to spend GP "..
@@ -255,7 +255,7 @@ function mod:DisplayItemUserSelection(lootData)
     btn:SetPoint("BOTTOMLEFT", btnMainspec, "BOTTOMRIGHT", 1, 0)
     btn:SetHeight(25)
     btn:SetWidth(115)
-    btn:SetText("Minor upgrade")
+    btn:SetText("Небольшое улучш")
     btn:SetScript("OnEnter", function()
       mod:ShowInfoPopup("Minor Upgrade", "Use this selection if the item is only a small upgrade "..
                                         "for your main talent build and you wish to give the item "..
@@ -269,7 +269,7 @@ function mod:DisplayItemUserSelection(lootData)
     btn:SetPoint("BOTTOMLEFT", btnUpgrade, "BOTTOMRIGHT", 1, 0)
     btn:SetHeight(25)
     btn:SetWidth(70)
-    btn:SetText("Offspec")
+    btn:SetText("Оффспек")
     btn:SetScript("OnEnter", function()
       mod:ShowInfoPopup("Offspec", "Use this selection if this item is an upgrade for your secondary "..
                                     "talent build.")

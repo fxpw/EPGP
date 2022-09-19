@@ -47,6 +47,23 @@ function EPGP:StartRecurringEP(reason, amount)
                  vars.recurring_ep_period_mins)
   return true
 end
+function EPGP:StartRecurringGP(reason, amount)
+  local vars = EPGP.db.profile
+  if vars.next_award then
+    return false
+  end
+
+  vars.next_award_reason = reason
+  vars.next_award_amount = amount
+  vars.next_award = GetTime() + vars.recurring_ep_period_mins * 60
+  frame:Show()
+
+  callbacks:Fire("StartRecurringAward",
+                 vars.next_award_reason,
+                 vars.next_award_amount,
+                 vars.recurring_ep_period_mins)
+  return true
+end
 
 StaticPopupDialogs["EPGP_RECURRING_RESUME"] = {
   text = "%s",
@@ -109,14 +126,33 @@ function EPGP:CancelRecurringEP()
   frame:Hide()
 end
 
+function EPGP:CancelRecurringGP()
+  StaticPopup_Hide("EPGP_RECURRING_RESUME")
+  local vars = EPGP.db.profile
+  vars.next_award_reason = nil
+  vars.next_award_amount = nil
+  vars.next_award = nil
+  frame:Hide()
+end
+
 function EPGP:StopRecurringEP()
   self:CancelRecurringEP()
 
   callbacks:Fire("StopRecurringAward")
   return true
 end
+function EPGP:StopRecurringGP()
+  self:CancelRecurringGP()
 
+  callbacks:Fire("StopRecurringAward")
+  return true
+end
 function EPGP:RunningRecurringEP()
+  local vars = EPGP.db.profile
+  return not not vars.next_award
+end
+
+function EPGP:RunningRecurringGP()
   local vars = EPGP.db.profile
   return not not vars.next_award
 end

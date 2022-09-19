@@ -48,12 +48,20 @@ end
 local LOG_FORMAT = "LOG:%d\31%s\31%s\31%s\31%d"
 
 local function AppendToLog(kind, event_type, name, reason, amount, mass, undo)
+  print(event_type)
   if not undo then
     -- Clear the redo table
     for k,_ in ipairs(mod.db.profile.redo) do
       mod.db.profile.redo[k] = nil
     end
-    local entry = {GetTimestamp(), kind, name, reason, amount}
+	local curEP, curGP = EPGP:GetEPGP(name)
+    local logChange = 0
+    if event_type == "GPAward" then
+      logChange = curGP+amount
+    else
+      logChange = curEP+amount
+    end
+    local entry = {GetTimestamp(), kind, name, reason, amount, logChange}
     table.insert(mod.db.profile.log, entry)
     mod:SendCommMessage("EPGP", string.format(LOG_FORMAT, unpack(entry)),
                         "GUILD", nil, "BULK")
@@ -63,9 +71,9 @@ end
 
 function mod:LogSync(prefix, msg, distribution, sender)
   if prefix == "EPGP" and sender ~= UnitName("player") then
-    local timestamp, kind, name, reason, amount = deformat(msg, LOG_FORMAT)
+    local timestamp, kind, name, reason, amount, diff = deformat(msg, LOG_FORMAT)
     if timestamp then
-      local entry = {tonumber(timestamp), kind, name, reason, tonumber(amount)}
+      local entry = {tonumber(timestamp), kind, name, reason, tonumber(amount), diff or 0}
       table.insert(mod.db.profile.log, entry)
       callbacks:Fire("LogChanged", #self.db.profile.log)
     end
@@ -73,16 +81,16 @@ function mod:LogSync(prefix, msg, distribution, sender)
 end
 
 local function LogRecordToString(record)
-  local timestamp, kind, name, reason, amount = unpack(record)
+  local timestamp, kind, name, reason, amount, diff = unpack(record)
 
   if kind == "EP" then
-    return string.format(L["%s: %+d EP (%s) to %s"],
-                         date("%Y-%m-%d %H:%M", timestamp), amount, reason, name)
+    return string.format("%s: %+d EP (%s) для %s",
+                         date("%Y-%m-%d %H:%M", timestamp), amount, reason, (diff and name.." ("..diff..")") or name)
   elseif kind == "GP" then
-    return string.format(L["%s: %+d GP (%s) to %s"],
-                         date("%Y-%m-%d %H:%M", timestamp), amount, reason, name)
+    return string.format("%s: %+d GP (%s) для %s",
+                         date("%Y-%m-%d %H:%M", timestamp), amount, reason, (diff and name.." ("..diff..")") or name)
   elseif kind == "BI" then
-    return string.format(L["%s: %s to %s"],
+    return string.format("%s: %s для %s",
                          date("%Y-%m-%d %H:%M", timestamp), reason, name)
   else
     assert(false, "Unknown record in the log")
@@ -113,7 +121,7 @@ function mod:UndoLastAction()
   local record = table.remove(self.db.profile.log)
   table.insert(self.db.profile.redo, record)
 
-  local timestamp, kind, name, reason, amount = unpack(record)
+  local timestamp, kind, name, reason, amount, diff = unpack(record)
 
   local ep, gp, main = EPGP:GetEPGP(name)
 
@@ -143,7 +151,7 @@ function mod:RedoLastUndo()
   assert(#self.db.profile.redo ~= 0)
 
   local record = table.remove(self.db.profile.redo)
-  local timestamp, kind, name, reason, amount = unpack(record)
+  local timestamp, kind, name, reason, amount, diff = unpack(record)
 
   local ep, gp, main = EPGP:GetEPGP(name)
   if kind == "EP" then
@@ -222,11 +230,11 @@ function mod:Export()
 
   d.loot = {}
   for i, record in ipairs(self.db.profile.log) do
-    local timestamp, kind, name, reason, amount = unpack(record)
+    local timestamp, kind, name, reason, amount, diff = unpack(record)
     if kind == "GP" or kind == "BI" then
       local id = tonumber(reason:match("item:(%d+)"))
       if id then
-        table.insert(d.loot, {timestamp, name, id, amount})
+        table.insert(d.loot, {timestamp, name, id, amount, diff})
       end
     end
   end

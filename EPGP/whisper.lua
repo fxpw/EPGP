@@ -105,6 +105,7 @@ mod.optionsArgs = {
 function mod:OnEnable()
   self:RegisterEvent("CHAT_MSG_WHISPER")
   EPGP.RegisterCallback(self, "MassEPAward", SendNotifiesAndClearExtras)
+  EPGP.RegisterCallback(self, "MassGPAward", SendNotifiesAndClearExtras)
   EPGP.RegisterCallback(self, "StartRecurringAward", SendNotifiesAndClearExtras)
 end
 

@@ -653,15 +653,19 @@ end
 
 function EPGP:CanIncEPBy(reason, amount)
   if not CanEditOfficerNote() or not GS:IsCurrentState() then
+    -- print(656)
     return false
   end
   if type(reason) ~= "string" or type(amount) ~= "number" or #reason == 0 then
+    -- print(660)
     return false
   end
   if amount ~= math.floor(amount + 0.5) then
+    -- print(664)
     return false
   end
   if amount < -99999 or amount > 99999 or amount == 0 then
+    -- print(668)
     return false
   end
   return true
@@ -705,7 +709,8 @@ end
 function EPGP:IncGPBy(name, reason, amount, mass, undo)
   -- When we do mass GP or decay we know what we are doing even though
   -- CanIncGPBy returns false
-  assert(EPGP:CanIncGPBy(reason, amount) or mass or undo)
+  reason = reason or "Я так хочу"
+  assert(EPGP:CanIncGPBy(reason or "Я так хочу", amount) or mass or undo)
   assert(type(name) == "string")
 
   local ep, gp, main = self:GetEPGP(name)
@@ -802,6 +807,47 @@ function EPGP:IncMassEPBy(reason, amount)
     end
   end
 end
+
+function EPGP:IncMassGPBy(reason, amount)
+  local awarded = {}
+  local extras_awarded = {}
+  local extras_amount = 0
+  local extras_reason = reason .. " - " .. L["Standby"]
+
+  for i=1,EPGP:GetNumMembers() do
+    local name = EPGP:GetMember(i)
+    if EPGP:IsMemberInAwardList(name) then
+      -- EPGP:GetMain() will return the input name if it doesn't find a main,
+      -- so we can't use it to validate that this actually is a character who
+      -- can recieve EP.
+      --
+      -- EPGP:GetEPGP() returns nil for ep and gp, if it can't find a
+      -- valid member based on the name however.
+      local ep, gp, main = EPGP:GetEPGP(name)
+      local main = main or name
+      if gp and not awarded[main] and not extras_awarded[main] then
+        -- if EPGP:IsMemberInExtrasList(name) then
+        --   extras_awarded[EPGP:IncGPBy(name, extras_reason,
+        --                               extras_amount, true)] = true
+        -- else
+          awarded[EPGP:IncGPBy(name, reason, amount, true)] = true
+        -- end
+      end
+    end
+  end
+  if next(awarded) then
+    if next(extras_awarded) then
+      callbacks:Fire("MassGPAward", awarded, reason, amount,
+                     extras_awarded, extras_reason, extras_amount)
+    else
+      callbacks:Fire("MassGPAward", awarded, reason, amount)
+    end
+  end
+end
+
+
+
+
 
 function EPGP:ReportErrors(outputFunc)
   for name, note in pairs(ignored) do
