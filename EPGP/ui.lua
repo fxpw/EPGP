@@ -1382,7 +1382,7 @@ local function CreateEPGPFrameStandings()
       EPGP:StandingsShowEveryone(not not self:GetChecked())
     end)
   local t = cb:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-  t:SetText(L["Show everyone"])
+  t:SetText("Все")
   t:SetPoint("RIGHT", cb, "LEFT", 0, 2)
   f:SetWidth(t:GetStringWidth() + 4 * tl:GetWidth() + cb:GetWidth())
 
