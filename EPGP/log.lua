@@ -48,7 +48,7 @@ end
 local LOG_FORMAT = "LOG:%d\31%s\31%s\31%s\31%d"
 
 local function AppendToLog(kind, event_type, name, reason, amount, mass, undo)
-  print(event_type)
+  -- print(event_type)
   if not undo then
     -- Clear the redo table
     for k,_ in ipairs(mod.db.profile.redo) do
