@@ -1,3 +1,3 @@
-# EPGP_Tralala_Edition
+# EPGP
 
 yeeee
