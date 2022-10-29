@@ -21,4 +21,4 @@
 
 embeds.xml
 
-EPGPAttendance.lua
+EPGP_Attendance.lua
