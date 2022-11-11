@@ -284,7 +284,13 @@ end
 
 function lib:GetValue(item)
   if not item then return end
-  local _, itemLink, rarity, level, _, _, _, _, equipLoc = C_Item.GetItemInfoCache(item)
+  local _, itemLink, rarity, level, equipLoc
+  if C_Item then
+    _, itemLink, rarity, level, _, _, _, _, equipLoc = C_Item.GetItemInfoCache(item)
+  else
+    _, itemLink, rarity, level, _, _, _, _, equipLoc = GetItemInfo(item)
+
+  end
   if not itemLink then return end
 
   -- Get the item ID to check against known token IDs

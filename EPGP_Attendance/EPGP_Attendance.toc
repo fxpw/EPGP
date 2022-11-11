@@ -10,7 +10,7 @@
 
 ## Title: EPGP Attendance -|cFFFF8080Ace3|r-
 ## Version: 3.0
-## Author: Corg, for tralala fxpw and fallafell
+## Author: Corg, fxpw and fallafell
 ## X-Category: Guild
 ## X-Website: http://www.wowace.com/addons/epgp-attendance/
 ## Notes: EPGP_Attendance is a mod that estimates raid attendance based on observed changes in EP.
