@@ -21,6 +21,7 @@ local ignored_items = {
   [30318] = true, -- Netherstrand Longbow
   [30319] = true, -- Nether Spikes
   [30320] = true, -- Bundle of Nether Spikes
+  [160000] = true, -- очки доблести
 }
 
 local in_combat = false
