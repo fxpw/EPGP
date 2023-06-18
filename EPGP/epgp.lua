@@ -571,7 +571,9 @@ function EPGP:GetNumMembersInAwardList()
     end
   end
 end
-
+function EPGP:GetMembersInAwardList()
+  return selected
+end
 function EPGP:IsMemberInAwardList(name)
   if UnitInRaid("player") then
     -- If we are in raid the member is in the award list if it is in
