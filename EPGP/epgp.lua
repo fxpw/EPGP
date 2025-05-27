@@ -362,8 +362,20 @@ local function ParseGuildInfo(callback, info)
   local new_config = {}
 
   for _,line in pairs(lines) do
-    if line == "-EPGP-" then
+    if line == "-EPGP-" or string.find(line,"-EPGP-") then
       in_block = not in_block
+	    for var, def in pairs(global_config_defs) do
+        local v = line:match(def.pattern)
+        if v then
+          Debug("Matched [%s]", line)
+          v = def.parser(v)
+          if v == nil or not def.validator(v) then
+            EPGP:Print(def.error)
+          else
+            new_config[var] = v
+          end
+        end
+      end
     elseif in_block then
       for var, def in pairs(global_config_defs) do
         local v = line:match(def.pattern)
